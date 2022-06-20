@@ -111,5 +111,14 @@ namespace QLSV_LinQ.BS_layer
 
             return f;
         }
+
+        public string[] LayTenKhoa()
+        {
+            QLSinhVienDataContext qlSV = new QLSinhVienDataContext();
+            var query = (from k in qlSV.Khoas
+                         where k.status == 0
+                         select k.tenKhoa).ToArray();
+            return query;
+        }
     }
 }

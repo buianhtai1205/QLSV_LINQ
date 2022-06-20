@@ -119,5 +119,14 @@ namespace QLSV_LinQ.BS_layer
                          
             return query;
         }
+
+        public string[] LayTenMonHoc()
+        {
+            QLSinhVienDataContext qlSV = new QLSinhVienDataContext();
+            var query = (from mh in qlSV.MonHocs
+                         where mh.status == 0
+                         select mh.tenMH).ToArray();
+            return query;
+        }
     }
 }

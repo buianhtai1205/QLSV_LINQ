@@ -19,21 +19,21 @@ namespace QLSV_LinQ
         string tenKhoa = "Khóa 2018";
         string tenMonHoc = "Lập trình OOP";
         string tenDiem = "Điểm quá trình";
+        BLKhoa dbKhoa = new BLKhoa();
+        BLMonHoc dbMH = new BLMonHoc();
 
         public frmTKDiem()
         {
             InitializeComponent();
 
-            cbbKhoa.Items.Add("Khóa 2018");
-            cbbKhoa.Items.Add("Khóa 2019");
-            cbbKhoa.Items.Add("Khóa 2020");
-            cbbKhoa.Items.Add("Khóa 2021");
+            string[] khoa = dbKhoa.LayTenKhoa();
+            for (int i = 0; i < khoa.Length; i++)
+                cbbKhoa.Items.Add(khoa[i]);
             cbbKhoa.SelectedIndex = cbbKhoa.FindStringExact("Khóa 2018");
 
-            cbbMH.Items.Add("Lập trình OOP");
-            cbbMH.Items.Add("Lập trình Windows");
-            cbbMH.Items.Add("Anh Văn");
-            cbbMH.Items.Add("Toán cao cấp");
+            string[] monhoc = dbMH.LayTenMonHoc();
+            for (int i = 0; i < monhoc.Length; i++)
+                cbbMH.Items.Add(monhoc[i]);
             cbbMH.SelectedIndex = cbbMH.FindStringExact("Lập trình OOP");
 
             cbbDiem.Items.Add("Điểm quá trình");
